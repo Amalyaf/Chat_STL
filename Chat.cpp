@@ -25,13 +25,13 @@ void Chat::registration()
 	char c = 'y';
 		while (c != 'n')
 		{
-			std::cout << "\nРегистрация нового пользователя\n";
+			std::cout << "Регистрация нового пользователя\n";
 			Users user;
 			user.setUser();
 			vector<Users>::iterator result = find(allUsers.begin(), allUsers.end(), user);
 			if (result != allUsers.end())
 			{
-				std::cout << "Пользователь с таким логином уже существует!\nХотите повторить попытку?(y/n)";
+				std::cout << "\nПользователь с таким логином уже существует!\nХотите повторить попытку?(y/n)";
 				std::cin >> c;
 			}
 			else
