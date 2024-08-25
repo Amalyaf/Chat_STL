@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bad_login.cpp" />
+    <ClCompile Include="bad_password.cpp" />
     <ClCompile Include="Chat.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Users.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bad_login.h" />
+    <ClInclude Include="bad_password.h" />
     <ClInclude Include="Chat.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Users.h" />

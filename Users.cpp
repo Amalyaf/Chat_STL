@@ -34,7 +34,7 @@ std::string Users::getName()
 
 bool Users::operator==(const Users& user)
 {
-	return user._login==_login;
+	return user._login == _login;
 }
 
 std::ostream& operator<<(std::ostream& output, const Users& user)

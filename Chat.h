@@ -23,5 +23,5 @@ public:
 	void sendPublicMessage(); // отправка публичных сообщений
 	bool getstatus(); // метод выводит статус авторизации (_status)
 	void exit(); // разлогинить авторизованного пользователя
-	void printMessage();
+	void printMessage(std::string recipient);
 };
