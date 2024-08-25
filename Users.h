@@ -1,0 +1,20 @@
+#pragma once
+#include <iostream>
+
+class Users
+{
+private:
+	std::string _login; // логин
+	std::string _password; // пароль
+	std::string _name; // имя
+
+public:
+	Users(); // конструктор
+	~Users(); // деструктор
+	void setUser(); // метод запрашивает данные пользователя
+	std::string getLogin(); // метод возвращает логин пользователя
+	std::string getPassword(); // метод возвращает пароль пользователя
+	std::string getName(); // метод возвращает имя пользователя
+	friend std::ostream& operator<<(std::ostream& output, const Users& user); // перегрузка оператора вывода
+	bool operator==(const Users& user); // перегрузка оператора вывода
+};
