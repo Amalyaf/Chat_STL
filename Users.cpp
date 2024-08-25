@@ -7,11 +7,6 @@ Users::Users()
 	_name = "-";
 }
 
-Users::~Users()
-{
-
-}
-
 void Users::setUser()
 {
 	std::cout << "¬ведите логин: \n";
@@ -41,7 +36,6 @@ bool Users::operator==(const Users& user)
 {
 	return user._login==_login;
 }
-
 
 std::ostream& operator<<(std::ostream& output, const Users& user)
 {

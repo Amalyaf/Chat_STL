@@ -4,13 +4,13 @@
 class Users
 {
 private:
-	std::string _login; // логин
 	std::string _password; // пароль
 	std::string _name; // имя
 
 public:
+	std::string _login; // логин
 	Users(); // конструктор
-	~Users(); // деструктор
+	~Users() = default;// деструктор
 	void setUser(); // метод запрашивает данные пользователя
 	std::string getLogin(); // метод возвращает логин пользователя
 	std::string getPassword(); // метод возвращает пароль пользователя

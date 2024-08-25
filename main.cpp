@@ -13,6 +13,9 @@ int main()
 		cin >> contin;
 		cout << endl;
 	}
+	
+	chat.sendPrivateMessage();
+	chat.sendPublicMessage();
+	chat.printMessage();
 
-	chat.getChat();
 }
