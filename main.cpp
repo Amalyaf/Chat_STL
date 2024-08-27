@@ -26,7 +26,7 @@ int main()
 
 			if (c == 'y')
 			{
-				cout << "Выберите тип отправляемого сообщения: 1-private, 2-public\n";
+				cout << "\nВыберите тип отправляемого сообщения: 1-private, 2-public\n";
 				cin >> message;
 				switch (message)
 				{
