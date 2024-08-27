@@ -24,4 +24,5 @@ public:
 	bool getstatus(); // метод выводит статус авторизации (_status)
 	void exit(); // разлогинить авторизованного пользователя
 	void printMessage(std::string recipient);
+	void deleteMessage(std::string recipient); // удаление прочитанного сообщения
 };

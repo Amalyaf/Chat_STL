@@ -54,13 +54,7 @@ void Chat::enter()
 				{
 					_status = true;
 					c = 'n';
-					if (_login == _recipient)
-					{
-						std::cout << "\n------------------------------------------------------\n";
-						std::cout << "У вас есть новые сообщения" << ": ";
-						printMessage(_recipient);
-						std::cout << "\n------------------------------------------------------\n";
-					}
+					printMessage(_login);
 				}
 			}
 
@@ -146,23 +140,58 @@ void Chat::sendPublicMessage()
 
 void Chat::printMessage(string recipient)
 {
+	int count = 0;
 	for (vector<Message>::iterator it = allMessage.begin(); it < allMessage.end(); it++)
 	{
 		if (it->_recipient == recipient)
 		{
+			count++;
+			if (count == 1)
+			{
+				std::cout << "\n------------------------------------------------------\n";
+				std::cout << "У вас есть новые личные сообщения" << ": ";
+			}
 			cout << "\nОтправитель: " << it->_sender << endl <<
 				"Получатель: " << it->_recipient << endl <<
 				"Сообщение: " << it->_message << endl;
 		}
 	}
-
+	if (count!=0)
+	{
+		std::cout << "\n------------------------------------------------------\n";
+		deleteMessage(recipient);
+	}
+	count = 0;
 	for (vector<Message>::iterator it = allMessage.begin(); it < allMessage.end(); it++)
 	{
-		if (it->_recipient == "all")
+		if (it->_recipient == "all" && recipient!=it->_sender)
 		{
+			count++;
+			if (count == 1)
+			{
+				std::cout << "\n------------------------------------------------------\n";
+				std::cout << "У вас есть новые общие сообщения" << ": ";
+			}
 			cout << "\nОтправитель: " << it->_sender << endl <<
 				"Сообщение: " << it->_message << endl;
 		}
+	}
+	if (count!=0)
+	{
+		std::cout << "\n------------------------------------------------------\n";
+	}
+}
+
+void Chat::deleteMessage(std::string recipient)
+{
+	for (vector<Message>::iterator it = allMessage.begin(); it < allMessage.end();)
+	{
+		if (it->_recipient == recipient)
+		{
+			it = allMessage.erase(it);
+		}
+		else
+			++it;
 	}
 }
 
