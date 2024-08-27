@@ -72,8 +72,6 @@ void Chat::enter()
 	}
 }
 
-
-
 void Chat::registration()
 {
 	char c = 'y';
@@ -85,8 +83,9 @@ void Chat::registration()
 			vector<Users>::iterator result = find(allUsers.begin(), allUsers.end(), user);
 			if (result != allUsers.end())
 			{
-				cout << "\nПользователь с таким логином уже существует!\nХотите повторить попытку?(y/n)";
+				cout << "\nПользователь с таким логином уже существует!\nХотите повторить попытку?(y/n)\n";
 				cin >> c;
+				cout << endl;
 			}
 			else
 			{
