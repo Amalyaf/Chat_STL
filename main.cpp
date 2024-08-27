@@ -62,4 +62,5 @@ int main()
 			cout << "¬ход не выполнен!\n";
 		}
 	}
+	chat.printAllMessage();
 }

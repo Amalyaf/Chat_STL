@@ -188,11 +188,23 @@ void Chat::deleteMessage(std::string recipient)
 	{
 		if (it->_recipient == recipient)
 		{
+			viewedMessage.push_back(*it);
 			it = allMessage.erase(it);
 		}
 		else
 			++it;
 	}
+}
+
+void Chat::printAllMessage()
+{
+	for (vector<Message>::iterator it = viewedMessage.begin(); it != viewedMessage.end(); it++)
+	{
+		cout << "\nОтправитель: " << it->_sender << endl <<
+			"Получатель: " << it->_recipient << endl <<
+			"Сообщение: " << it->_message << endl;
+	}
+	cout << endl;
 }
 
 bool Chat::getstatus()

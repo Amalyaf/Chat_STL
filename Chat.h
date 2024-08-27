@@ -11,7 +11,8 @@ private:
 	std::string _sender; // отправитель сообщения
 	std::string _login; // логин авторизованного пользователя
 	std::string _password; // пароль авторизованного пользователя
-	std::vector<Message>allMessage;
+	std::vector<Message>allMessage; // все новые сообщения
+	std::vector<Message>viewedMessage; // просмотренные сообщения
 	bool _status = false; // если был выполнен вход статус = true, в противном случае - false.
 public:
 	Chat(); // конструктор
@@ -23,6 +24,7 @@ public:
 	void sendPublicMessage(); // отправка публичных сообщений
 	bool getstatus(); // метод выводит статус авторизации (_status)
 	void exit(); // разлогинить авторизованного пользователя
-	void printMessage(std::string recipient);
-	void deleteMessage(std::string recipient); // удаление прочитанного сообщения
+	void printMessage(std::string recipient); // вывод на экран новых сообщений
+	void deleteMessage(std::string recipient); // перемещение прочитанных личных сообщений в viewedMessage и их удаление из allMessage
+	void printAllMessage(); // вывод на экран всех просмотренных личных сообщений
 };
