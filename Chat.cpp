@@ -129,13 +129,21 @@ void Chat::sendPrivateMessage()
 void Chat::sendPublicMessage()
 {
 	Message message;
-	message._recipient = "all";
 	message._sender = _login;
 	std::cout << "¬ведите групповое сообщение:\n";
 	message.setMessage();
-	allMessage.push_back(message);
-}
+	for (vector<Users>::iterator it = allUsers.begin(); it < allUsers.end(); it++)
+	{
+		if (it->_login != _login)
+		{
+			message._recipient = it->_login;
+			allPublicMessage.push_back(message);
+		}
+	}
 
+	message._recipient = "all";
+	viewedMessage.push_back(message);
+}
 
 
 void Chat::printMessage(string recipient)
@@ -159,12 +167,12 @@ void Chat::printMessage(string recipient)
 	if (count!=0)
 	{
 		std::cout << "\n------------------------------------------------------\n";
-		deleteMessage(recipient);
+		deletePrivateMessage(recipient);
 	}
 	count = 0;
-	for (vector<Message>::iterator it = allMessage.begin(); it < allMessage.end(); it++)
+	for (vector<Message>::iterator it = allPublicMessage.begin(); it < allPublicMessage.end(); it++)
 	{
-		if (it->_recipient == "all" && recipient!=it->_sender)
+		if (it->_recipient == recipient)
 		{
 			count++;
 			if (count == 1)
@@ -179,10 +187,11 @@ void Chat::printMessage(string recipient)
 	if (count!=0)
 	{
 		std::cout << "\n------------------------------------------------------\n";
+		deletePublicMessage(recipient);
 	}
 }
 
-void Chat::deleteMessage(std::string recipient)
+void Chat::deletePrivateMessage(std::string recipient)
 {
 	for (vector<Message>::iterator it = allMessage.begin(); it < allMessage.end();)
 	{
@@ -190,6 +199,19 @@ void Chat::deleteMessage(std::string recipient)
 		{
 			viewedMessage.push_back(*it);
 			it = allMessage.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
+void Chat::deletePublicMessage(std::string recipient)
+{
+	for (vector<Message>::iterator it = allPublicMessage.begin(); it < allPublicMessage.end();)
+	{
+		if (it->_recipient == recipient)
+		{
+			it = allPublicMessage.erase(it);
 		}
 		else
 			++it;
