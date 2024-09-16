@@ -4,5 +4,5 @@
 class BadLogin :public std::exception
 {
 public:
-	virtual const char* what() const override;
+	virtual const char* what() const noexcept override;
 };

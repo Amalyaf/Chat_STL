@@ -37,16 +37,11 @@ void Chat::enter()
 
 			else
 			{
+				user = *result;
 				std::cout << "¬ведите пароль: \n";
 				std::cin >> _password;
-				int i = 0;
-				for (; i < allUsers.size(); i++)
-				{
-					if (allUsers[i]._password == _password)
-						break;
-				}
-				
-				if (i==allUsers.size())
+								
+				if (user._password!=_password)
 				{
 					throw BadPassword();
 				}
@@ -57,7 +52,6 @@ void Chat::enter()
 					printMessage(_login);
 				}
 			}
-
 		}
 		catch (BadLogin& e)
 		{
